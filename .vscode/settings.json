@@ -3,7 +3,13 @@
     "source.fixAll.eslint": "explicit"
   },
   "files.associations": {
-    "*.css": "postcss"
+    "*.css": "tailwindcss"
   },
-  "editor.formatOnSave": false
+  "editor.formatOnSave": false, 
+  "files.exclude": {
+    ".output": true,
+    ".nuxt": true,
+    "pnpm-lock.yaml": false, 
+    ".data": true   
+  },
 }
