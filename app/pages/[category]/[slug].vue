@@ -4,12 +4,12 @@
  * This page is a simple/full-feature replacement of document driven.
  */
 import type { LayoutKey } from '#build/types/layouts'
-
 const route = useRoute()
 
-const { data: page } = await useAsyncData(`page-${route.params.slug}`, () => {
-  return queryCollection('content').path(route.path).first()
+const { data: page } = await useAsyncData(`page-${route.params.category}-${route.params.slug}`, () => {
+  return queryCollection('content').path(`/${route.params.category}/${route.params.slug}`).first()
 })
+
 
 if (!page.value) {
   throw createError({
@@ -19,6 +19,8 @@ if (!page.value) {
 }
 
 useSeoMeta(page.value?.seo || {})
+
+
 </script>
 
 <template>
@@ -30,3 +32,5 @@ useSeoMeta(page.value?.seo || {})
     />
   </NuxtLayout>
 </template>
+
+
