@@ -6,14 +6,6 @@
     "*.css": "tailwindcss"
   },
   "editor.formatOnSave": true,
-  "files.exclude": {
-    ".output": true,
-    ".nuxt": true,
-    "pnpm-lock.yaml": true,
-    ".data": true,
-    "dist": true,
-    "node_modules": true
-  },
 
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {

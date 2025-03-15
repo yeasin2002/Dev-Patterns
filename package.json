@@ -1,43 +1,31 @@
 {
-  "name": "pattern-sphere",
-  "main": "nuxt.config.ts",
-  "license": "MIT",
+  "name": "next-contentlayer",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "generate": "nuxi generate",
-    "preview": "nuxi preview",
-    "lint": "eslint ."
+    "dev": "next dev",
+    "build": "next build",
+    "preview": "next build && next start",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.28",
-    "@iconify-json/simple-icons": "^1.2.27",
-    "@nuxt/content": "^3.3.0",
-    "@nuxt/fonts": "^0.11.0",
-    "@nuxt/icon": "^1.11.0",
-    "@nuxt/image": "^1.9.0",
-    "@nuxt/scripts": "^0.11.2",
-    "@nuxt/test-utils": "^3.17.2",
-    "@nuxt/ui": "^3.0.0",
-    "@nuxtjs/color-mode": "^3.5.2",
-    "@nuxtjs/mdx": "^1.0.0",
-    "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.0.9",
-    "nuxt": "^3.15.4",
-    "tailwindcss": "^4.0.9"
-  },
-  "devDependencies": {
-    "@nuxt/eslint": "^1.2.0",
-    "eslint": "^9.21.0",
-    "typescript": "^5.8.2"
-  },
-  "packageManager": "pnpm@10.5.2",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "better-sqlite3",
-      "esbuild",
-      "vue-demi"
-    ]
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "18.16.1",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
+    "@vercel/analytics": "^1.0.0",
+    "autoprefixer": "10.4.14",
+    "contentlayer": "^0.3.2",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
+    "next": "13.4.1",
+    "next-contentlayer": "^0.3.2",
+    "next-themes": "^0.2.1",
+    "postcss": "8.4.23",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.2",
+    "typescript": "5.0.4"
   }
 }
