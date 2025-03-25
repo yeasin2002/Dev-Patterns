@@ -49,8 +49,6 @@ export default async function PagePage({ params }: PageProps) {
     notFound();
   }
 
-  console.log("page.body.code", page?.body?.code);
-
   return (
     <article className="py-6 prose dark:prose-invert">
       <h1>{page.title}</h1>
