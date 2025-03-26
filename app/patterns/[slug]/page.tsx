@@ -1,6 +1,6 @@
 import { Mdx } from "@/components/mdx";
 import { getPageFromParams } from "@/helper";
-import { allPrinciples } from "contentlayer/generated";
+import { allPatterns } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -11,7 +11,7 @@ interface PageProps {
 
 export default async function PagePage({ params }: PageProps) {
   const { slug } = await params;
-  const page = await getPageFromParams(allPrinciples, slug);
+  const page = await getPageFromParams(allPatterns, slug);
 
   if (!page) {
     notFound();
