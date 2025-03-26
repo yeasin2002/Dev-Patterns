@@ -1,0 +1,31 @@
+---
+title: "SOLID Principles Explained"
+description: "A deep dive into the five SOLID principles of object-oriented design"
+pubDate: 2024-01-22
+author: "Alex Johnson"
+tags: ["SOLID", "object-oriented design", "best practices"]
+---
+
+# SOLID Principles Explained
+
+SOLID is an acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.
+
+## Single Responsibility Principle (SRP)
+
+A class should have one, and only one, reason to change.
+
+## Open/Closed Principle (OCP)
+
+Software entities should be open for extension but closed for modification.
+
+## Liskov Substitution Principle (LSP)
+
+Objects of a superclass should be replaceable with objects of its subclasses without breaking the application.
+
+## Interface Segregation Principle (ISP)
+
+Clients should not be forced to depend on interfaces they do not use.
+
+## Dependency Inversion Principle (DIP)
+
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
