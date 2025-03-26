@@ -49,6 +49,6 @@ export const Principles = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-  contentDirPath: "./content",
+  contentDirPath: "./src/content",
   documentTypes: [Principles, Patterns],
 });
