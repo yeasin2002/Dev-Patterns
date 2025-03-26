@@ -1,3 +1,4 @@
+import { Mdx } from "@/components/mdx";
 import { allPages } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -53,6 +54,7 @@ export default async function PagePage({ params }: PageProps) {
       <h1>{page.title}</h1>
       {page.description && <p className="text-xl">{page.description}</p>}
       <hr />
+      <Mdx code={page.body.code} />
     </article>
   );
 }

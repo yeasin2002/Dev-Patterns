@@ -380,7 +380,7 @@ interface MdxProps {
 }
 
 export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code ? code : "");
+  const Component = useMDXComponent(code);
 
   return <Component components={components} />;
 }
