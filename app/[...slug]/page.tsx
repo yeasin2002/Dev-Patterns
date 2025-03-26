@@ -1,5 +1,5 @@
 import { Mdx } from "@/components/mdx";
-import { allPages } from "contentlayer/generated";
+import { allPatterns } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -11,7 +11,7 @@ interface PageProps {
 
 async function getPageFromParams(params: PageProps["params"]) {
   const slug = params?.slug?.join("/");
-  const page = allPages.find((page) => page.slugAsParams === slug);
+  const page = allPatterns.find((page) => page.slugAsParams === slug);
 
   if (!page) {
     null;
@@ -36,7 +36,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
-  return allPages.map((page) => ({
+  return allPatterns.map((page) => ({
     slug: page.slugAsParams.split("/"),
   }));
 }

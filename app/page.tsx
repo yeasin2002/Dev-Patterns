@@ -1,17 +1,9 @@
-import { allPosts } from "@/.contentlayer/generated"
-import Link from "next/link"
-
 export default function Home() {
   return (
-    <div className="prose dark:prose-invert">
-      {allPosts.map((post) => (
-        <article key={post._id}>
-          <Link href={post.slug}>
-            <h2>{post.title}</h2>
-          </Link>
-          {post.description && <p>{post.description}</p>}
-        </article>
-      ))}
+    <div className="min-h-screen flex items-center justify-center">
+      <h1 className="font-display relative mt-2 scroll-m-20 text-4xl font-bold tracking-tight text-foreground">
+        Learn software principles and patterns
+      </h1>
     </div>
-  )
+  );
 }

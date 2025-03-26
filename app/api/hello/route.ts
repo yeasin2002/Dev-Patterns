@@ -1,3 +1,11 @@
+import { allPages } from "contentlayer/generated";
+import { NextResponse } from "next/server";
+
 export async function GET(request: Request) {
-  return new Response('Hello, Next.js!')
+  return NextResponse.json({
+    status: 200,
+    message: "Success",
+    total: allPages.length,
+    data: allPages,
+  });
 }
