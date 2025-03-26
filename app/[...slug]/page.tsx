@@ -2,8 +2,6 @@ import { allPages } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Mdx } from "@/components/mdx-components";
-
 interface PageProps {
   params: {
     slug: string[];
@@ -44,6 +42,7 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
 
 export default async function PagePage({ params }: PageProps) {
   const page = await getPageFromParams(params);
+  console.log(page);
 
   if (!page) {
     notFound();
@@ -54,9 +53,8 @@ export default async function PagePage({ params }: PageProps) {
       <h1>{page.title}</h1>
       {page.description && <p className="text-xl">{page.description}</p>}
       <hr />
-      {page?.body?.code && <Mdx code={page.body.code} />}
     </article>
   );
 }
 
-// <Mdx code={page.body.code} />
+// {page?.body?.code && <Mdx code={page.body.code} />}
