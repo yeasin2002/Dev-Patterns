@@ -4,9 +4,9 @@ import { allPrinciples } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function PagePage({ params }: PageProps) {

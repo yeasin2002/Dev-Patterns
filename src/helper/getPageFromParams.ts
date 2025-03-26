@@ -1,6 +1,9 @@
-import { type allDocuments } from "@/.contentlayer/generated";
+import { type allDocuments } from "contentlayer/generated";
 
-export async function getPageFromParams(data: typeof allDocuments, slug: string) {
+export async function getPageFromParams(
+  data: typeof allDocuments,
+  slug: string
+) {
   const page = data.find((page) => page.slugAsParams === slug);
 
   if (!page) {
