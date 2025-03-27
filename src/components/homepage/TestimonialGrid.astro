@@ -1,0 +1,66 @@
+---
+import Testimonial from "./Testimonial.astro";
+
+// Define testimonial data
+const testimonials = [
+  {
+    quote:
+      "If you're building a code project in 2025 use @better_auth. It has everything you need now and everything you'll need at scale. dont take this suggestion lightly..",
+    name: "Omar McAdam",
+    title: "Creator of AugmentedHQ",
+    avatar: "/placeholder-user.jpg",
+    platform: "twitter",
+  },
+  {
+    quote:
+      "I've tried dozens of pattern libraries, but DEV-PATTERNS is the only one that actually improved my code architecture. The examples are practical and easy to implement.",
+    name: "Sarah Johnson",
+    title: "Lead Developer at TechFlow",
+    avatar: "/placeholder-user.jpg",
+    platform: "twitter",
+  },
+  {
+    quote:
+      "The SOLID principles section alone saved our team months of refactoring. Clear explanations with real-world examples make all the difference.",
+    name: "Michael Chen",
+    title: "Software Architect",
+    avatar: "/placeholder-user.jpg",
+    platform: "github",
+  },
+];
+---
+
+<div class="testimonial-grid">
+  {
+    testimonials.map((testimonial) => (
+      <Testimonial
+        quote={testimonial.quote}
+        name={testimonial.name}
+        title={testimonial.title}
+        avatar={testimonial.avatar}
+        platform={testimonial.platform}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .testimonial-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonial-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
