@@ -1,9 +1,10 @@
 ---
+import Spotlight from "../ui/spotlight.astro";
 import Codeblocks from "./codeblocks.astro";
 ---
 
 <div
-  class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-start gap-8"
+  class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-start gap-8 relative"
 >
   <div class="md:w-1/2 space-y-6">
     <div class="flex items-center gap-2">
@@ -101,4 +102,6 @@ import Codeblocks from "./codeblocks.astro";
   <div class="md:w-1/2">
     <Codeblocks />
   </div>
+
+  <Spotlight className=" md:-top-20 md:left-60" fill="white" />
 </div>

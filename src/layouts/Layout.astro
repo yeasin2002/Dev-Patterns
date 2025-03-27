@@ -19,10 +19,8 @@ const { title = "Blog" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-black min-h-screen">
-    <div class="container mx-auto">
-      <Nav />
-      <slot />
-    </div>
+    <Nav />
+    <slot />
   </body>
 </html>
 
