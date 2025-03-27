@@ -42,3 +42,7 @@ next-env.d.ts
 
 # astro
 **/.astro
+/.astro/content-modules.mjs
+.astro/content-modules.mjs
+
+dist 
