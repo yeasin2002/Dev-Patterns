@@ -18,17 +18,13 @@ const { title = "Blog" } = Astro.props;
     <ClientRouter />
     <title>{title}</title>
   </head>
-  <body class="bg-black min-h-screen">
+  <body>
     <Nav />
     <slot />
   </body>
 </html>
 
 <style is:global>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
   :root {
     --accent: 136, 58, 234;
     --accent-light: 224, 204, 250;
@@ -40,11 +36,11 @@ const { title = "Blog" } = Astro.props;
       white 60%
     );
   }
+  body {
+    background-color: black;
+  }
 
   html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
     color-scheme: dark;
   }
 </style>
