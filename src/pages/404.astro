@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - BETTER-AUTH">
+  <div class="min-h-screen bg-black text-white flex flex-col">
+    <!-- Main Content with vertical lines -->
+    <div class="flex-1 flex relative">
+      <!-- Left vertical line -->
+      <div
+        class="absolute left-12 top-0 bottom-0 w-px bg-zinc-800 flex items-center"
+      >
+        <span class="text-zinc-500 text-xl">+</span>
+      </div>
+
+      <!-- Right vertical line -->
+      <div
+        class="absolute right-12 top-0 bottom-0 w-px bg-zinc-800 flex items-center"
+      >
+        <span class="text-zinc-500 text-xl">+</span>
+      </div>
+
+      <!-- Center content -->
+      <div class="flex-1 flex flex-col items-center justify-center">
+        <!-- Logo -->
+        <div class="mb-6">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M20 0H0V40H20V30H10V10H20V0Z" fill="white"></path>
+            <path d="M30 10H40V40H20V30H30V10Z" fill="white"></path>
+          </svg>
+        </div>
+
+        <!-- 404 Text -->
+        <h1 class="text-8xl font-bold mb-2">404</h1>
+        <p class="text-sm mb-6">Need help? Visit the docs</p>
+
+        <!-- Button -->
+        <a
+          href="/docs"
+          class="bg-white text-black px-6 py-2 text-sm font-medium hover:bg-gray-200 transition-colors"
+        >
+          GO TO DOCS
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
