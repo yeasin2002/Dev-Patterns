@@ -1,0 +1,31 @@
+---
+title: "DRY: Don't Repeat Yourself"
+description: "Understanding and applying the DRY principle in software development"
+pubDate: 2024-01-23
+author: "Sarah Wilson"
+tags: ["principles", "clean code", "maintainability"]
+---
+
+# DRY: Don't Repeat Yourself
+
+The DRY principle states that "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system."
+
+## Why DRY Matters
+
+1. Reduces maintenance overhead
+2. Minimizes bugs
+3. Improves code readability
+4. Makes refactoring easier
+
+## Common Anti-patterns
+
+- Copy-paste programming
+- Duplicate business logic
+- Redundant data storage
+
+## Best Practices
+
+1. Use functions and classes effectively
+2. Create reusable components
+3. Implement proper abstraction layers
+4. Utilize design patterns

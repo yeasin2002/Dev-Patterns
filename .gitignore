@@ -34,3 +34,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .contentlayer
+.astro
+/.astro
+.astro/
+.astro*
+
+
+# astro
+**/.astro
