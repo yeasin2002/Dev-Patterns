@@ -3,6 +3,7 @@ interface Props {
   title?: string;
 }
 import { ClientRouter } from "astro:transitions";
+import Nav from "../components/shared/nav.astro";
 
 const { title = "Blog" } = Astro.props;
 ---
@@ -17,8 +18,11 @@ const { title = "Blog" } = Astro.props;
     <ClientRouter />
     <title>{title}</title>
   </head>
-  <body class="bg-gray-50 min-h-screen">
-    <slot />
+  <body class="bg-black min-h-screen">
+    <div class="container mx-auto">
+      <Nav />
+      <slot />
+    </div>
   </body>
 </html>
 
