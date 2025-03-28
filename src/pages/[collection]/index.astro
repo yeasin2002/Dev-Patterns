@@ -1,0 +1,28 @@
+---
+import { collectionNames } from "@/utils";
+
+import { getCollection } from "astro:content";
+const { collection } = Astro.params;
+const patterns = await getCollection("patterns");
+console.log("patterns", patterns);
+
+export async function getStaticPaths() {
+  return collectionNames.map((name) => ({ params: { collection: name } }));
+}
+---
+
+<h1>Dynamic Route</h1>
+<p>Category: <strong>{collection}</strong></p>
+
+<div>
+  <p>Al patterns</p>
+  <ul>
+    {
+      patterns.map((pattern) => (
+        <li>
+          <a href={`/patterns/${pattern.slug}`}>{pattern.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
