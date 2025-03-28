@@ -1,0 +1,28 @@
+---
+import { cn } from "@/utils/cn";
+import Logo from "@/components/shared/logo.astro";
+
+import { Menu } from "@/assets/icons";
+interface Props {
+  class: string;
+}
+const props: Props = Astro.props;
+---
+
+<nav
+  class={cn(
+    "flex justify-between items-center border-b border-gray-800 px-4 py-4",
+    props.class
+  )}
+>
+  <div>
+    <a href="/" class="flex items-center gap-2">
+      <Logo />
+      <span class="font-bold">DEV-PATTERNS</span>
+    </a>
+  </div>
+
+  <div>
+    <Menu />
+  </div>
+</nav>

@@ -1,12 +1,15 @@
 ---
 import Hero from "@/components/homepage/hero.astro";
-import FeatureGrid from "@/components/homepage/FeatureGrid.astro";
+import ContentList from "@/components/shared/content-list.astro";
 import TestimonialGrid from "@/components/homepage/TestimonialGrid.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout title="DEV-PATTERNS | Software Development Patterns and Principles">
+<Layout title="Dev-Patterns | Software Development Patterns and Principles">
   <Hero />
-  <FeatureGrid />
+  <ContentList
+    heading="Design Patterns"
+    desc="A collection of design patterns for software development"
+  />
   <TestimonialGrid />
 </Layout>

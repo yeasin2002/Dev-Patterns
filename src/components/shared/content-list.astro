@@ -1,0 +1,66 @@
+---
+import { PlusMini } from "@/assets/icons";
+import {features, iconMap  } from "../../data/features";
+interface Props {
+  heading: string;
+  desc: string;
+}
+const { heading, desc }: Props = Astro.props;
+---
+
+<div class="container mx-auto overflow-x-hidden">
+  <h2 class="text-xl md:text-2xl font-bold  ">{heading}</h2>
+  <p class="text-lg md:text-xl font-medium  ">{desc}</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 border border-gray-800 relative  mt-6">
+    {features.map((feature, index) => (
+      <div class="p-8 border-gray-800 relative">
+        <div class="flex items-center gap-2 mb-4">
+          <span set:html={iconMap[feature.icon as keyof typeof iconMap]} />
+          <span>{feature.title.split(feature.highlight)[0]}</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">
+          {feature.title.split(feature.highlight)[0]}
+          <span class="font-bold">{feature.highlight}</span>
+          {feature.highlight.endsWith(".") ? "" : "."}
+        </h3>
+        <p class="text-gray-400 mb-4">
+          {feature.description}
+        </p>
+        <a href="#" class="text-gray-400 hover:text-white">Learn more</a>
+  
+        <!-- Add plus icons at intersections -->
+        {(index === 0 || index === 1 || index === 3 || index === 4) && (
+          <div class="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 z-10">
+            <div class="w-6 h-6 flex items-center justify-center"><PlusMini/></div>
+          </div>
+        )}
+  
+        {(index === 0 || index === 1 || index === 2) && (
+          <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10">
+            <div class="w-6 h-6 flex items-center justify-center"><PlusMini/></div>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+
+  /* Add borders between cells */
+  .grid > div {
+    border-right: 1px solid rgb(31, 41, 55); /* border-gray-800 */
+    border-bottom: 1px solid rgb(31, 41, 55); /* border-gray-800 */
+  }
+  
+  /* Remove right border from last column */
+  .grid > div:nth-child(3n) {
+    border-right: none;
+  }
+  
+  /* Remove bottom border from last row */
+  .grid > div:nth-child(n+4):nth-child(-n+6) {
+    border-bottom: none;
+  }
+</style>
+
