@@ -1,7 +1,7 @@
 ---
 import Logo from "@/components/shared/logo.astro";
-import { collectionNames } from "@/utils";
-import { cn } from "@/utils/cn";
+import { navData } from "@/data";
+import { cn } from "@/utils";
 import { Github } from "@/components/icons";
 
 interface Props {
@@ -24,13 +24,13 @@ const props: Props = Astro.props;
   </div>
   <div class="flex">
     {
-      collectionNames.map((item) => {
+      navData.map((item) => {
         return (
           <a
-            href={`/${item}`}
+            href={item.href}
             class="px-6 py-5 hover:bg-gray-900 border-b-2 border-transparent hover:border-white capitalize"
           >
-            {item}
+            {item.name}
           </a>
         );
       })
