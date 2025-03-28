@@ -5,27 +5,139 @@ pubDate: 2024-01-22
 author: "Alex Johnson"
 tags: ["SOLID", "object-oriented design", "best practices"]
 ---
+# SOLID নীতিগুলি ব্যাখ্যা
 
-# SOLID Principles Explained
+SOLID হল পাঁচটি ডিজাইন প্রিন্সিপালের একটি সংক্ষিপ্ত রূপ, যা সফটওয়্যার ডেভেলপমেন্টে কোডের স্থায়িত্ব, নমনীয়তা এবং রিইউজযোগ্যতা নিশ্চিত করতে ব্যবহৃত হয়।
 
-SOLID is an acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.
+## ১. Single Responsibility Principle (SRP) - একক দায়িত্ব নীতি
+একটি ক্লাসের শুধুমাত্র একটি দায়িত্ব থাকা উচিত। অর্থাৎ, একটি ক্লাস শুধুমাত্র একটি কাজ করবে এবং সেই কাজের জন্য দায়ী থাকবে।
 
-## Single Responsibility Principle (SRP**)**
+**উদাহরণ:**
+```typescript
+class User {
+    private name: string;
+    private email: string;
 
-A class should have one, and only one, reason to change.
+    constructor(name: string, email: string) {
+        this.name = name;
+        this.email = email;
+    }
 
-## Open/Closed Principle (OCP)
+    getUserInfo() {
+        return `${this.name} - ${this.email}`;
+    }
+}
+```
 
-Software entities should be open for extension but closed for modification.
+## ২. Open/Closed Principle (OCP) - উন্মুক্ত/বন্ধ নীতি
+একটি ক্লাসকে সম্প্রসারণযোগ্য হতে হবে কিন্তু পরিবর্তনের জন্য উন্মুক্ত হওয়া উচিত নয়। অর্থাৎ, নতুন ফিচার যোগ করতে পারবো কিন্তু মূল কোড পরিবর্তন করা উচিত নয়।
 
-## Liskov Substitution Principle (LSP)
+**উদাহরণ:**
+```typescript
+interface Shape {
+    area(): number;
+}
 
-Objects of a superclass should be replaceable with objects of its subclasses without breaking the application.
+class Circle implements Shape {
+    constructor(private radius: number) {}
 
-## Interface Segregation Principle (ISP)
+    area(): number {
+        return Math.PI * this.radius * this.radius;
+    }
+}
 
-Clients should not be forced to depend on interfaces they do not use.
+class Rectangle implements Shape {
+    constructor(private width: number, private height: number) {}
 
-## Dependency Inversion Principle (DIP)
+    area(): number {
+        return this.width * this.height;
+    }
+}
+```
 
-High-level modules should not depend on low-level modules. Both should depend on abstractions.
+## ৩. Liskov Substitution Principle (LSP) - লিসকভ সাবস্টিটিউশন নীতি
+একটি সাবক্লাসকে তার প্যারেন্ট ক্লাসের পরিবর্তে ব্যবহার করা যাবে, তাতে প্রোগ্রামের আচরণে কোনো পরিবর্তন আসবে না।
+
+**উদাহরণ:**
+```typescript
+class Bird {
+    fly(): void {
+        console.log("Flying");
+    }
+}
+
+class Sparrow extends Bird {}
+
+class Penguin extends Bird {
+    fly(): void {
+        throw new Error("Penguins can't fly");
+    }
+}
+```
+> **সমস্যা:** এখানে Penguin ক্লাস Bird ক্লাসকে এক্সটেন্ড করলেও এটি `fly` মেথড সঠিকভাবে কাজ করবে না। তাই, Bird ক্লাসে `fly` থাকা উচিত নয়, বরং এটি একটি `FlyingBird` সাবক্লাস তৈরি করে আলাদা করা উচিত।
+
+## ৪. Interface Segregation Principle (ISP) - ইন্টারফেস বিভাজন নীতি
+বড় একটি ইন্টারফেসের পরিবর্তে ছোট ছোট নির্দিষ্ট ইন্টারফেস তৈরি করা উচিত, যাতে ক্লাসগুলো শুধুমাত্র প্রয়োজনীয় মেথডগুলোকেই ইমপ্লিমেন্ট করতে পারে।
+
+**উদাহরণ:**
+```typescript
+interface Workable {
+    work(): void;
+}
+
+interface Sleepable {
+    sleep(): void;
+}
+
+class Human implements Workable, Sleepable {
+    work(): void {
+        console.log("Working...");
+    }
+
+    sleep(): void {
+        console.log("Sleeping...");
+    }
+}
+
+class Robot implements Workable {
+    work(): void {
+        console.log("Working...");
+    }
+}
+```
+
+## ৫. Dependency Inversion Principle (DIP) - নির্ভরতা বিপর্যয় নীতি
+একটি উচ্চ স্তরের মডিউলকে নিম্ন স্তরের মডিউলের উপর নির্ভরশীল করা উচিত নয়, বরং উভয়কে একটি অ্যাবস্ট্রাকশন বা ইন্টারফেসের উপর নির্ভরশীল করা উচিত।
+
+**উদাহরণ:**
+```typescript
+interface Database {
+    save(data: string): void;
+}
+
+class MySQLDatabase implements Database {
+    save(data: string): void {
+        console.log("Data saved in MySQL: " + data);
+    }
+}
+
+class MongoDBDatabase implements Database {
+    save(data: string): void {
+        console.log("Data saved in MongoDB: " + data);
+    }
+}
+
+class DataManager {
+    constructor(private database: Database) {}
+
+    saveData(data: string) {
+        this.database.save(data);
+    }
+}
+```
+> **লাভ:** এখন আমরা MySQL থেকে MongoDB বা অন্য যে কোনো ডাটাবেস ব্যবহার করতে পারবো, কারণ `DataManager` সরাসরি কোনো নির্দিষ্ট ডাটাবেসের উপর নির্ভরশীল নয়।
+
+---
+
+## উপসংহার
+SOLID নীতিগুলি অনুসরণ করলে সফটওয়্যার কোড আরও রিইউজেবল, মডুলার এবং মেইনটেনযোগ্য হয়। এটি বিশেষ করে বড় প্রজেক্টের জন্য অত্যন্ত গুরুত্বপূর্ণ।

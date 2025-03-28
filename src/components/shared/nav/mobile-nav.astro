@@ -3,6 +3,7 @@ import { cn } from "@/utils/cn";
 import Logo from "@/components/shared/logo.astro";
 
 import { Menu } from "@/components/icons";
+import Button from "@/components/starwind/button";
 interface Props {
   class: string;
 }
@@ -23,6 +24,8 @@ const props: Props = Astro.props;
   </div>
 
   <div>
-    <Menu />
+    <Button aria-label="Toggle Menu">
+      <Menu />
+    </Button>
   </div>
 </nav>
