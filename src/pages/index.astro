@@ -2,6 +2,9 @@
 import Hero from "@/components/homepage/hero.astro";
 import ContentList from "@/components/shared/content-list.astro";
 import TestimonialGrid from "@/components/homepage/TestimonialGrid.astro";
+import Feature from "@/components/homepage/features-card.astro";
+import Codeblocks from "@/components/homepage/codeblocks.astro";
+
 import Layout from "@/layouts/Layout.astro";
 ---
 
@@ -12,4 +15,7 @@ import Layout from "@/layouts/Layout.astro";
     desc="A collection of design patterns for software development"
   />
   <TestimonialGrid />
+  <div class="container mx-auto">
+    <Codeblocks />
+  </div>
 </Layout>
