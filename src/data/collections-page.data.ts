@@ -11,6 +11,13 @@ export const collectionPageData = [
     title: "Software Engineering Principles",
     desc: `সফটওয়্যার প্রিন্সিপলস হল কোডের গুণমান ও দক্ষতা বজায় রাখার জন্য কিছু নির্দেশিকা, যা উন্নত, রক্ষণাবেক্ষণযোগ্য ও স্কেলেবল সফটওয়্যার তৈরি করতে সাহায্য করে। এর প্রধান লক্ষ্য হলো জটিলতা কমানো, পুনঃব্যবহারযোগ্যতা বৃদ্ধি করা এবং সহজে বাগ শনাক্ত ও সমাধান করা। SOLID, DRY (Don't Repeat Yourself), KISS (Keep It Simple, Stupid), এবং YAGNI (You Ain’t Gonna Need It) এর মতো জনপ্রিয় সফটওয়্যার প্রিন্সিপলস ডেভেলপারদের ভালো সফটওয়্যার ডিজাইন করতে সহায়তা করে, যা সময় ও খরচ বাঁচায় এবং ভবিষ্যতে সহজে পরিবর্তন করা যায়।`,
   },
+
+  {
+    name: "react-patterns",
+    heading: "রিয়েক্ট ডিজাইন প্যাটার্ন ",
+    title: "React Design Patterns",
+    desc: `ডিজাইন প্যাটার্ন রিয়েক্ট এর জন্য `,
+  },
 ];
 
 export const getCollectionPageData = (name: string) => {

@@ -15,4 +15,5 @@ const blogCollection = defineCollection({
 export const collections = {
   patterns: blogCollection,
   principles: blogCollection,
+  "react-patterns": blogCollection,
 };

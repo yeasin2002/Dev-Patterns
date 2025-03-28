@@ -2,7 +2,7 @@
 import { type CollectionEntry } from "astro:content";
 
 export interface Props {
-  pattern: CollectionEntry<"patterns" | "principles">;
+  pattern: CollectionEntry<"patterns" | "principles" | "react-patterns">;
   collection: string;
 }
 const { pattern, collection } = Astro.props;

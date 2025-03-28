@@ -178,6 +178,16 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"react-patterns": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "react-patterns";
+  data: InferEntrySchema<"react-patterns">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 
 	};
 
