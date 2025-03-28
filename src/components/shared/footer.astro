@@ -1,0 +1,89 @@
+---
+import { Github, Linkedin, Twitter } from "../icons";
+---
+
+<footer class="border-t border-gray-800">
+  <div class="!container flex flex-col gap-8 py-8 md:flex-row md:py-12 md:px-4">
+    <div class="flex-1 space-y-4">
+      <h2 class="font-bold">Amane Soft</h2>
+      <p class="text-sm text-muted-foreground">
+        Pioneering software solutions for the digital age.
+      </p>
+    </div>
+    <div class="grid flex-1 grid-cols-2 gap-12 sm:grid-cols-3">
+      <div class="space-y-4">
+        <h3 class="text-sm font-medium">Solutions</h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a
+              href="/ai-analytics"
+              class="text-muted-foreground transition-colors hover:text-primary"
+            >
+              AI Analytics
+            </a>
+          </li>
+          <li>
+            <a
+              href="/cloud-services"
+              class="text-muted-foreground transition-colors hover:text-primary"
+            >
+              Cloud Services
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-sm font-medium">Company</h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a
+              href="/about"
+              class="text-muted-foreground transition-colors hover:text-primary"
+            >
+              About Us
+            </a>
+          </li>
+          <li>
+            <a
+              href="/careers"
+              class="text-muted-foreground transition-colors hover:text-primary"
+            >
+              Careers
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-sm font-medium">Connect</h3>
+        <div class="flex space-x-4">
+          <a
+            href="https://github.com/amanesoft"
+            class="text-muted-foreground transition-colors hover:text-primary"
+          >
+            <Github class="h-5 w-5" />
+            <span class="sr-only">GitHub</span>
+          </a>
+          <a
+            href="https://twitter.com/amanesoft"
+            class="text-muted-foreground transition-colors hover:text-primary"
+          >
+            <Twitter class="h-5 w-5" />
+            <span class="sr-only">Twitter</span>
+          </a>
+          <a
+            href="https://linkedin.com/company/amanesoft"
+            class="text-muted-foreground transition-colors hover:text-primary"
+          >
+            <Linkedin class="h-5 w-5" />
+            <span class="sr-only">LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-gray-800 py-6">
+    <p class="text-center text-sm text-muted-foreground">
+      © {new Date().getFullYear()} Dev Patterns, All rights reserved.
+    </p>
+  </div>
+</footer>

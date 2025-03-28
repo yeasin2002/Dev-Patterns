@@ -4,6 +4,7 @@ interface Props {
 }
 import { ClientRouter } from "astro:transitions";
 import Nav from "../components/shared/nav/nav.astro";
+import Footer from "../components/shared/footer.astro";
 import "../styles/starwind.css";
 
 const { title = "Blog" } = Astro.props;
@@ -19,8 +20,9 @@ const { title = "Blog" } = Astro.props;
     <ClientRouter />
     <title>{title}</title>
   </head>
-  <body class="pb-8">
+  <body>
     <Nav />
     <slot />
+    <Footer />
   </body>
 </html>

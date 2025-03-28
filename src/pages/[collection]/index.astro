@@ -1,28 +1,47 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import { collectionNames } from "@/utils";
-
 import { getCollection } from "astro:content";
-const { collection } = Astro.params;
-const patterns = await getCollection("patterns");
-console.log("patterns", patterns);
+import BlogCard from "@/components/homepage/blog-card.astro";
+import { getCollectionPageData } from "@/data";
+import type { DataEntryMap } from "astro:content";
 
+const { collection } = Astro.params;
+const pageDate = getCollectionPageData(collection);
+if (!pageDate) return Astro.redirect("/404", 404);
+
+const patterns = await getCollection(collection as keyof DataEntryMap);
 export async function getStaticPaths() {
   return collectionNames.map((name) => ({ params: { collection: name } }));
 }
 ---
 
-<h1>Dynamic Route</h1>
-<p>Category: <strong>{collection}</strong></p>
+<Layout title={pageDate.title}>
+  <section class="mb-7">
+    <div
+      class="container flex min-h-[70vh] max-w-screen-2xl flex-col items-center justify-center space-y-8 py-24 text-center md:py-32"
+      style="background: linear-gradient(to right, rgba(19, 48, 94, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(189, 25, 25, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px"
+    >
+      <h1
+        class="bg-gradient-to-br from-gray-100 from-30% via-gray-200/90 to-gray-400/70 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
+      >
+        {pageDate.heading}
+      </h1>
+      <p
+        class="mx-auto max-w-4xl leading-normal text-gray-400 sm:text-lg sm:leading-8"
+      >
+        {pageDate.desc}
+      </p>
+    </div>
 
-<div>
-  <p>Al patterns</p>
-  <ul>
-    {
-      patterns.map((pattern) => (
-        <li>
-          <a href={`/patterns/${pattern.slug}`}>{pattern.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
-</div>
+    <div class="grid grid-cols-3 container mx-auto gap-6">
+      {
+        patterns.map((blog) => (
+          <BlogCard pattern={blog} collection={collection} />
+        ))
+      }
+    </div>
+  </section>
+</Layout>
