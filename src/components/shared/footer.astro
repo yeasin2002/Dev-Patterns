@@ -3,75 +3,76 @@ import { Github, Linkedin, Twitter } from "../icons";
 ---
 
 <footer class="border-t border-gray-800">
-  <div class="!container flex flex-col gap-8 py-8 md:flex-row md:py-12 md:px-4">
+  <div class="container flex flex-col gap-8 py-8 md:flex-row md:py-12 mx-auto">
     <div class="flex-1 space-y-4">
-      <h2 class="font-bold">Amane Soft</h2>
-      <p class="text-sm text-muted-foreground">
-        Pioneering software solutions for the digital age.
+      <h2 class="font-bold">DEV-PATTERNS</h2>
+      <p class="text-sm text-muted-foreground capitalize">
+        software development patterns and principles
       </p>
     </div>
     <div class="grid flex-1 grid-cols-2 gap-12 sm:grid-cols-3">
       <div class="space-y-4">
-        <h3 class="text-sm font-medium">Solutions</h3>
+        <h3 class="text-sm font-medium">অন্যান্য কোর্স</h3>
         <ul class="space-y-3 text-sm">
           <li>
             <a
-              href="/ai-analytics"
+              href="/https://stack-unboxed.vercel.app/javascript"
               class="text-muted-foreground transition-colors hover:text-primary"
             >
-              AI Analytics
+              JavaScript
             </a>
           </li>
           <li>
             <a
-              href="/cloud-services"
+              href="https://stack-unboxed.vercel.app/typescript"
               class="text-muted-foreground transition-colors hover:text-primary"
             >
-              Cloud Services
+              TypeScript
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="space-y-4 mt-3">
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a
+              href="https://stack-unboxed.vercel.app/reactjs"
+              class="text-muted-foreground transition-colors hover:text-primary"
+            >
+              React JS
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://stack-unboxed.vercel.app/git"
+              class="text-muted-foreground transition-colors hover:text-primary"
+            >
+              Git
             </a>
           </li>
         </ul>
       </div>
       <div class="space-y-4">
-        <h3 class="text-sm font-medium">Company</h3>
-        <ul class="space-y-3 text-sm">
-          <li>
-            <a
-              href="/about"
-              class="text-muted-foreground transition-colors hover:text-primary"
-            >
-              About Us
-            </a>
-          </li>
-          <li>
-            <a
-              href="/careers"
-              class="text-muted-foreground transition-colors hover:text-primary"
-            >
-              Careers
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="space-y-4">
-        <h3 class="text-sm font-medium">Connect</h3>
+        <h3 class="text-sm font-medium font-hind-siliguri">
+          মেইন্টেনার এর সাথে যোগাযোগ
+        </h3>
         <div class="flex space-x-4">
           <a
-            href="https://github.com/amanesoft"
+            href="https://github.com/yeasin2002"
             class="text-muted-foreground transition-colors hover:text-primary"
           >
             <Github class="h-5 w-5" />
             <span class="sr-only">GitHub</span>
           </a>
           <a
-            href="https://twitter.com/amanesoft"
+            href="http://x.com/yeasin2002.dev"
             class="text-muted-foreground transition-colors hover:text-primary"
           >
             <Twitter class="h-5 w-5" />
             <span class="sr-only">Twitter</span>
           </a>
           <a
-            href="https://linkedin.com/company/amanesoft"
+            href="https://www.linkedin.com/in/yeasin2002/"
             class="text-muted-foreground transition-colors hover:text-primary"
           >
             <Linkedin class="h-5 w-5" />
@@ -81,9 +82,11 @@ import { Github, Linkedin, Twitter } from "../icons";
       </div>
     </div>
   </div>
-  <div class="border-t border-gray-800 py-6">
+  <div class="py-6">
     <p class="text-center text-sm text-muted-foreground">
-      © {new Date().getFullYear()} Dev Patterns, All rights reserved.
+      ২০{
+        new Intl.DateTimeFormat("bn-BD-u-ca-beng").format(new Date()).slice(-2)
+      } Dev Patterns,সমস্ত অধিকার সংরক্ষিত।
     </p>
   </div>
 </footer>
