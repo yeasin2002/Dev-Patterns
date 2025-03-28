@@ -1,6 +1,5 @@
 ---
 import { PlusMini } from "@/components/icons";
-import {iconMap  } from "../../data/features";
 import type { CollectionEntry } from "astro:content";
 interface Props {
   heading: string;
@@ -8,6 +7,8 @@ interface Props {
   features: CollectionEntry<"patterns" | "principles" | "react-patterns">[];
 }
 const { heading, desc, features }: Props = Astro.props;
+
+
 ---
 
 <div class="container mx-auto overflow-x-hidden">
@@ -29,7 +30,7 @@ const { heading, desc, features }: Props = Astro.props;
         <p class="text-gray-400 mb-4">
           {feature.data.description}
         </p>
-        <a href="#" class="text-gray-400 hover:text-white">Learn more</a>
+        <a href={`/${feature.collection}/${feature.slug}`} class="text-gray-400 hover:text-white">Learn more</a>
   
         <!-- Add plus icons at intersections -->
         {(index === 0 || index === 1 || index === 3 || index === 4) && (

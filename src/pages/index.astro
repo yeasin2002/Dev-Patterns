@@ -2,11 +2,11 @@
 import Hero from "@/components/homepage/hero.astro";
 import ContentList from "@/components/shared/content-list.astro";
 import TestimonialGrid from "@/components/homepage/TestimonialGrid.astro";
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
 import Codeblocks from "@/components/homepage/codeblocks.astro";
 
-import Layout from "@/layouts/Layout.astro";
-import { getCollectionPageData } from "@/data";
-import { getCollection } from "astro:content";
+import { collectionPageData } from "@/data";
 
 // contents
 const patters = await getCollection("patterns");
@@ -16,13 +16,24 @@ const reactPatterns = await getCollection("react-patterns");
 
 <Layout title="Dev-Patterns | Software Development Patterns and Principles">
   <Hero />
-  <ContentList
-    heading="ডিজাইন প্যাটার্ন"
-    desc="সফ্টওয়্যার বিকাশের জন্য ডিজাইনের নিদর্শনগুলির একটি সংগ্রহ"
-    features={patters}
-  />
-  <TestimonialGrid />
-  <div class="container mx-auto">
-    <Codeblocks />
+
+  <div class="space-y-16">
+    <ContentList
+      heading="সফ্টওয়্যার ডিজাইন প্যাটার্ন"
+      desc="সফ্টওয়্যার বিকাশের জন্য ডিজাইনের নিদর্শনগুলির একটি সংগ্রহ"
+      features={patters.slice(0, 6)}
+    />
+
+    <ContentList
+      heading="সফ্টওয়্যার  ডিজাইন প্রিন্সিপালস"
+      desc="সফ্টওয়্যার বিকাশের জন্য ডিজাইনের নিদর্শনগুলির একটি সংগ্রহ"
+      features={principles.slice(0, 6)}
+    />
+
+    <ContentList
+      heading="রিয়েক্ট  ডিজাইন প্যাটার্ন"
+      desc="সফ্টওয়্যার বিকাশের জন্য ডিজাইনের নিদর্শনগুলির একটি সংগ্রহ"
+      features={reactPatterns.slice(0, 6)}
+    />
   </div>
 </Layout>
