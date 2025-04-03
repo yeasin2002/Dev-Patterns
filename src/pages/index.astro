@@ -1,12 +1,9 @@
 ---
-import Hero from "@/components/homepage/hero.astro";
-import ContentList from "@/components/shared/content-list.astro";
-import TestimonialGrid from "@/components/homepage/TestimonialGrid.astro";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import Codeblocks from "@/components/homepage/codeblocks.astro";
 
-import { collectionPageData } from "@/data";
+import Hero from "@/components/homepage/hero.astro";
+import ContentList from "@/components/homepage/content-wrapper.astro";
 
 // contents
 const patters = await getCollection("patterns");
@@ -17,7 +14,7 @@ const reactPatterns = await getCollection("react-patterns");
 <Layout title="Dev-Patterns | Software Development Patterns and Principles">
   <Hero />
 
-  <div class="space-y-32 mb-10">
+  <div class="space-y-14 mb-10">
     <ContentList
       heading="সফ্টওয়্যার ডিজাইন প্যাটার্ন"
       desc="সফ্টওয়্যার বিকাশের জন্য ডিজাইনের নিদর্শনগুলির একটি সংগ্রহ"

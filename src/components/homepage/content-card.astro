@@ -1,0 +1,24 @@
+---
+export interface Props {
+  title: string;
+  desc: string;
+  collection: string;
+  slug: string;
+}
+
+const { title, desc, collection, slug }: Props = Astro.props;
+---
+
+<div
+  class="bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl overflow-hidden flex flex-col w-full px-6 pt-4 pb-6"
+>
+  <div class="space-y-3">
+    <div class="text-lg font-anekBangla font-bold">{title}</div>
+    <p class="text-gray-200 text-base leading-normal m-0">{desc}</p>
+
+    <a
+      href={`/${collection}/${slug}`}
+      class="text-[#8f8f8f] hover:text-white block mt-6">Learn more</a
+    >
+  </div>
+</div>
