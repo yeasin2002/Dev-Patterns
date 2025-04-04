@@ -2,14 +2,16 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import { collectionNames } from "@/utils";
-import { Calender, User } from "@/components/icons";
 
 export async function getStaticPaths() {
   const patterns = await getCollection("patterns");
   const principles = await getCollection("principles");
+  const reactPatterns = await getCollection("react-patterns");
+
+  const collectionList = [...patterns, ...principles, ...reactPatterns];
 
   const allPaths = collectionNames.flatMap((collection) => {
-    return [...patterns, ...principles].map((entry) => ({
+    return collectionList.map((entry) => ({
       params: { collection, slug: entry.slug },
       props: { entry },
     }));
@@ -21,9 +23,6 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const { collection } = Astro.params;
-
-const displayType =
-  entry.collection.charAt(0).toUpperCase() + entry.collection.slice(1);
 ---
 
 <Layout title={entry.data.title}>

@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import BlogCard from "@/components/homepage/blog-card.astro";
 import { getCollectionPageData } from "@/data";
 import type { DataEntryMap } from "astro:content";
+import Contents from "@/components/shared/content-card.astro";
 
 const { collection } = Astro.params;
 const pageDate = getCollectionPageData(collection);
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 <Layout title={pageDate.title}>
   <section class="mb-7">
     <div
-      class="container flex min-h-[70vh] max-w-screen-2xl flex-col items-center justify-center space-y-8 py-24 text-center md:py-32"
+      class="container flex min-h-[70vh] max-w-screen-2xl flex-col items-center justify-center space-y-8 py-24 text-center md:py-32 mx-auto"
       style="background: linear-gradient(to right, rgba(19, 48, 94, 0.02) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(189, 25, 25, 0.02) 1px, transparent 1px);
     background-size: 20px 20px"
