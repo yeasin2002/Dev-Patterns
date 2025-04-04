@@ -22,7 +22,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const { collection } = Astro.params;
 
-// Determine the collection type for the breadcrumb
 const displayType =
   entry.collection.charAt(0).toUpperCase() + entry.collection.slice(1);
 ---
@@ -42,27 +41,6 @@ const displayType =
 
     <header class="mb-8">
       <h1 class="text-4xl font-bold mb-4">{entry.data.title}</h1>
-      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-        <div class="flex items-center">
-          <Calender />
-          <span>{entry.data.pubDate.toLocaleDateString()}</span>
-        </div>
-        <div class="flex items-center">
-          <User />
-          <span>{entry.data.author}</span>
-        </div>
-        {
-          entry.data.tags && (
-            <div class="flex flex-wrap gap-2">
-              {entry.data.tags.map((tag: string) => (
-                <span class="bg-gray-100 px-2 py-1 rounded-full text-xs">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )
-        }
-      </div>
     </header>
 
     <div class="prose prose-lg font-noto-serif font-anekBangla">
