@@ -5,7 +5,6 @@ import { getCollection } from "astro:content";
 import BlogCard from "@/components/homepage/blog-card.astro";
 import { getCollectionPageData } from "@/data";
 import type { DataEntryMap } from "astro:content";
-import Contents from "@/components/shared/content-card.astro";
 
 const { collection } = Astro.params;
 const pageDate = getCollectionPageData(collection);

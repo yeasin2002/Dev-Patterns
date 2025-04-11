@@ -26,11 +26,13 @@ const { collection } = Astro.params;
 ---
 
 <Layout title={entry.data.title}>
-  <article class="max-w-6xl mx-auto px-4 py-8">
+  <article class="container mx-auto px-4 py-8 min-h-screen">
     <div class="mb-8">
-      <a href="/" class="text-blue-600 hover:text-blue-800 inline-block"
-        >← Back to Home</a
-      >
+      <button
+        onclick="history.back()"
+        class="text-blue-600 hover:text-blue-800 inline-block"
+        >← Back
+      </button>
       <div class="text-sm text-gray-500 mt-2">
         {collection.charAt(0).toUpperCase() + collection.slice(1)} / {
           entry.data.title
@@ -42,7 +44,7 @@ const { collection } = Astro.params;
       <h1 class="text-4xl font-bold mb-4">{entry.data.title}</h1>
     </header>
 
-    <div class="prose prose-lg font-noto-serif font-anekBangla">
+    <div class="prose prose-lg">
       <Content />
     </div>
   </article>
