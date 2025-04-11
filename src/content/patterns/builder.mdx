@@ -1,9 +1,170 @@
 ---
 lesson: 1
 title: "Builder Patterns"
-description: "Separates object construction from its representation for step-by-step creation"
+description: "এমন একটি ডিজাইন প্যাটার্ন যা জটিল অবজেক্টকে ধাপে ধাপে তৈরি করতে ব্যবহৃত হয়, যেখানে প্রতিটি ধাপ আলাদা করে কন্ট্রোল করা যায়।"
 ---
 
 # Understanding the Observer Pattern
 
-Separates object construction from its representation for step-by-step creation
+বিল্ডার প্যাটার্ন অবজেক্ট তৈরি করার ক্ষেত্রে সমস্যার সমাধান করে।
+উদাহরণ:
+এন্ড্রয়েড SDK তে AlertDialog ক্লাস বিল্ডার প্যাটার্নে করা।
+এছাড়াও কিভাবে কমপ্লেক্স অবজেক্ট তৈরি করা যায় তা বুঝার জন্য StringBuilder, DocumentBuilder ক্লাসগুলো দেখা যেতে পারে।
+বিল্ডার প্যাটার্নে কোড করার ক্ষেত্রে নিচের বিষয়গুলো বিবেচনা করতে হবে:
+
+জটিল কনস্ট্রাক্টর:
+যদি কয়েকটি কনস্ট্রাক্টর থাকে যাদের অবজেক্ট সহ অনেকগুলো প্যারামিটার আছে
+
+অনেকগুলো প্যারামিটার/প্রোপার্টি:
+
+অনেকগুলো প্রোপার্টি থাকলে যেগুলো কনস্ট্রাক্টর দিয়ে প্যারামিটার আকারে পাঠানোর প্রয়োজন।
+
+মিউটেবল নয়:
+
+অবজেক্ট তৈরির পর পরিবর্তন হবে না বা করা যাবে না এমন অবস্থা তৈরি করা যায়।
+
+এটা অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিংয়ের সমস্যা সমাধান করে যেমন: কোন কনস্ট্রাক্টর ব্যবহার করা হবে, প্রায়ই আমরা অনেকগুলো কনস্ট্রাক্টর তৈরি করে থাকি যা ম্যানেজ করা কঠিন। অনেকগুলো প্যারামিটারের সমন্বয়ে অনেকগুলো কনস্ট্রাক্টর থাকলে তাকে টেলিস্কোপিং কনস্ট্রাক্টর বলে। জটিল অবজেক্টের ইন্সটেন্স সহজে তৈরি করতে বিল্ডার প্যাটার্ণ ব্যবহার করা হয় যেটাতে টেলিস্কোপিং কনস্ট্রাক্টর থাকে।
+
+জাভাতে কনস্ট্রাক্টর, অবজেক্ট তৈরি করতে এবং অবজেক্টের প্রয়োজনীয় ডেটা প্যারামিটার দিয়ে নেয়ার জন্য ব্যবহার করা হয়। একটা উদাহরণ দেখি:
+
+একটি POJO জাভা ক্লাস নিচের মত হতে পারে।
+
+Example Code:
+```c 
+
+public class Student {
+        private String firstName;
+        private String middleName;
+        private String lastName;
+        private int    age;
+        private String fathersName;
+        private String mothersName;
+        private double height;
+        private double weight;
+
+    public Student(String firstName, String middleName, String lastName, int age, String fathersName, String mothersName, double height, double weight) {
+        this.firstName    = firstName  ;
+        this.middleName   = middleName ;
+        this.lastName     = lastName   ;
+        this.age          = age        ;
+        this.fathersName  = fathersName;
+        this.mothersName  = mothersName;
+        this.height       = height     ;
+        this.weight       = weight     ;
+    }
+
+    public Student(String firstName, String middleName, String lastName, String fathersName, String mothersName) {
+        this.firstName    = firstName  ;
+        this.middleName   = middleName ;
+        this.lastName     = lastName   ;
+        this.fathersName  = fathersName;
+        this.mothersName  = mothersName;
+    }
+
+    public Student(String firstName, String middleName, String lastName) {
+        this.firstName    = firstName  ;
+        this.middleName   = middleName ;
+        this.lastName     = lastName   ;
+    }
+}
+```
+
+
+৪/৫ টা ফিল্ড থাকলে তেমন সমস্যা হয় না কিন্তু আরো অনেকগুলো ফিল্ড/প্রোপার্টি থাকলে POJO ক্লাসটি জটিল হয়ে যাবে যা ব্যবহার করা আর যে ফিল্ড গুলো বাধ্যতামূলকভাবে অবজেক্টের জন্য প্রয়োজন সেগুলো সাজানো কষ্টসাধ্য। আর এতে কোডে বাগ বেড়ে যাওয়ার আশঙ্কা থাকে।
+
+POJO ক্লাসকে বিল্ডার প্যাটার্ণে সাজানো:
+
+যা করতে হবে:
+
+১. সবগুলো ফিল্ড দিয়ে একটি কনস্ট্রাক্টর তৈরি করতে হবে।
+
+২. একটি স্ট্যাটিক ইনার ক্লাস তৈরি করতে হবে (সাধারণত নাম দেয়া হয়: Builder)। স্ট্যাটিক করা হবে এজন্য যে এটার অবজেক্ট আমাদের রিটার্ন করার প্রয়োজন নেই।
+
+৩. POJO ক্লাসে যে ফিল্ডগুলো আছে সবগুলো কপি করে ইনার ক্লাসে রাখতে হবে।
+
+৪. ইনার ক্লাসে একটি খালি কনস্ট্রাক্টর এবং সবগুলো ফিল্ডের জন্য সেটার(setter) মেথড তৈরি করতে হবে। সকল সেটার মেথডের রিটার্ণ টাইপ হবে ইনার ক্লাস(this রিটার্ন করলেই হবে)।
+
+৫. ইনার ক্লাসে একটি মেথড তৈরি করতে হবে যা তার প্যারেন্ট ক্লাসের অবজেক্ট রিটার্ণ করবে। অবজেক্ট বানানোর জন্য ১ নং এ করা কনস্ট্রাক্টর ব্যবহার করা হয়। সাধারণত মেথডটির নাম হয় build()
+
+Example code:
+```c
+
+public class Student {
+        private String firstName;
+        private String middleName;
+        private String lastName;
+        private int    age;
+        private String fathersName;
+        private String mothersName;
+        private double height;
+        private double weight;
+
+    public Student(String firstName, String middleName, String lastName, int age, String fathersName, String mothersName, double height, double weight) {
+        this.firstName    = firstName  ;
+        this.middleName   = middleName ;
+        this.lastName     = lastName   ;
+        this.age          = age        ;
+        this.fathersName  = fathersName;
+        this.mothersName  = mothersName;
+        this.height       = height     ;
+        this.weight       = weight     ;
+    }
+
+    public static class Builder {
+        private String firstName;
+        private String middleName;
+        private String lastName;
+        private int    age;
+        private String fathersName;
+        private String mothersName;
+        private double height;
+        private double weight;        
+
+    public Builder(){}
+
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder setMiddleName(String middleName) {
+            this.middleName = middleName;
+            return this;
+        }
+
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Student build() {
+            return new Person(firstName, middleName, lastName, age, fathersName, mothersName, height, weight);
+        }
+    }
+}
+
+```
+
+
+বিল্ডার প্যাটার্ণের কোড ব্যবহার করা:
+
+ Student student = new Student.Builder()
+                .setAge(5)
+                .setFirstName("Bob")
+                .setHeight(6)
+                .setAge(19)
+                .build(); 
+সুবিধা:
+
+১. ৪/৫ টার বেশি ফিল্ড থাকলে অবজেক্ট তৈরি করা সহজ হয়।
+
+২. অবজেক্ট তৈরিতে কম ভুল হয়, কারণ ইউজার জানে সে কি ডাটা পাস করছে মেথড কলের মাধ্যমে।
+
+৩. বিল্ডার প্যাটার্ণ সক্ষমতা বাড়ায় কারণ একটি সম্পূর্ণ অবজেক্ট পাওয়া যায়।
+
+৪. অবজেক্ট তৈরির পর যেন পরিবর্তন করা না যায় অর্থাৎ ইমমিউটেবিলিটি অর্জন করা
+
+অসুবিধা:
+
+১. বিল্ডার প্যাটার্ণে বেশি কোড লিখতে হয় এবং কিছু কোড দুইবার করে লিখতে হয় কারণ বিল্ডার ইনার ক্লাসের ভিতরে সকল ফিল্ডের কপি রাখতে হয়।
+

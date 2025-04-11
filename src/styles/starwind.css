@@ -157,37 +157,60 @@
     transition-duration: var(--default-transition-duration);
   }
 }
-
 @layer utilities {
+  .prose {
+    @apply space-y-6;
+  }
+
   .prose > * {
-    @apply text-gray-300 font-anekBangla;
+    @apply font-anekBangla;
+  }
+
+  .prose h1 {
+    @apply text-4xl font-bold;
   }
 
   .prose h2 {
-    @apply text-2xl font-bold;
+    @apply text-3xl font-bold;
   }
 
   .prose h3,
-  h3,
+  h4,
   h5,
   h6 {
     @apply font-bold;
   }
 
   .prose p {
-    @apply my-2 xl:text-xl;
+    @apply my-2 xl:text-xl leading-8;
   }
 
-  .prose h2,
-  table {
-    @apply my-6   w-full;
+  .prose ul {
+    @apply my-6 space-y-3;
+  }
+
+  .prose li {
+    @apply list-disc list-inside;
+  }
+
+  .prose table {
+    @apply my-6 w-full;
 
     & thead {
-      @apply border-b border-b-gray-400 text-left;
+      @apply border-b border-b-gray-400;
     }
 
     & tbody {
-      @apply w-full text-left;
+      @apply w-full;
+    }
+
+    & td,
+    th {
+      @apply p-2;
+    }
+
+    & th {
+      @apply my-1;
     }
   }
 
@@ -196,3 +219,4 @@
     @apply my-6 px-4 py-4 rounded-md leading-4 overflow-y-hidden;
   }
 }
+
